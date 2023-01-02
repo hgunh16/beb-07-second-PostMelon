@@ -1,7 +1,5 @@
-const devController = {
+module.exports = {
   devHome: (req, res) => {
     res.send('dev page');
   },
 };
-
-module.exports = devController;

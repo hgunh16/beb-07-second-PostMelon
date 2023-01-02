@@ -1,7 +1,5 @@
-const userController = {
+module.exports = {
   userHome: (req, res) => {
     res.send('user page');
   },
 };
-
-module.exports = userController;
