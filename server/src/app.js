@@ -6,20 +6,19 @@ require('dotenv').config();
 const cors = require('cors');
 
 //router import
-const router = require('routes');
+const router = require('./routes');
 
 //setting
 const app = express();
 app.set('port', process.env.PORT || 4001);
 
 //routes
+app.use('/dev', router.devRouter);
+app.use('/user', router.userRouter);
 app.use('/', (req, res) => {
   res.send('hello!');
 });
 
-app.use('/dev', router.devRouter);
-app.use('/user', router, userRouter);
-
-app.app.listen(PORT, () => {
-  console.log(`server is listening at PORT : ${PORT}`);
+app.listen(app.get('port'), () => {
+  console.log(`server is listening at PORT : ${app.get('port')}`);
 });
