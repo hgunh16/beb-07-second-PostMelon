@@ -7,6 +7,7 @@ const nftSchema = new mongoose.Schema({
   description: { type: String, required: true }, //설명
   image_link: { type: String, required: true }, //이미지 주소
   price: { type: Number, requied: true }, // 가격
+  //창작자
 });
 
 module.exports = mongoose.model('Nft', nftSchema);
