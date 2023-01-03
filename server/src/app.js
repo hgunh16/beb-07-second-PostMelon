@@ -8,6 +8,9 @@ const cors = require('cors');
 //router import
 const router = require('./routes');
 
+//db import
+const connect = require('./models');
+
 //setting
 const app = express();
 app.set('port', process.env.PORT || 4001);
@@ -15,6 +18,7 @@ app.set('port', process.env.PORT || 4001);
 //middleware setting
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //routes
 app.use('/dev', router.devRouter);
@@ -36,6 +40,10 @@ app.use('/', (req, res) => {
 //     stacktrace: err.toString(),
 //   });
 // });
+
+//db connection
+
+connect();
 
 //server listen
 
