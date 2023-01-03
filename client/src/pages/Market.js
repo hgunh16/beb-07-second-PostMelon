@@ -1,4 +1,3 @@
-import '../assets / css/Market.css';
 import { Link } from 'react-router-dom';
 
 const Market = () => {
