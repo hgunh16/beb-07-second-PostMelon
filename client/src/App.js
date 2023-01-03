@@ -1,4 +1,3 @@
-import './assets / css/App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from 'components/layout/Header';
@@ -12,7 +11,6 @@ import Post from 'pages/Post';
 import PostDetail from 'pages/PostDetail';
 import Signup from 'pages/Signup';
 import NotFound from 'pages/NotFound';
-
 
 function App() {
   return (
@@ -28,7 +26,7 @@ function App() {
           <Route path="/post" element={<Post />}></Route>
           <Route path="/postdetail/:id" element={<PostDetail />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path='*' element={<NotFound/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>

@@ -1,4 +1,3 @@
-import '../assets / css/Mypage.css';
 import { Link } from 'react-router-dom';
 
 const Mypage = () => {

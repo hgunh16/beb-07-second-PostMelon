@@ -1,4 +1,3 @@
-import '../assets / css/NFTMint.css';
 import { Link } from 'react-router-dom';
 
 const NFTMint = () => {
