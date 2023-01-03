@@ -8,6 +8,9 @@ const userSchema = new mongoose.Schema({
   token_amount: { type: Number, required: true },
   eth_amount: { type: Number, required: true },
   created_at: { type: Date, default: Date.now, required: true },
+  //collected post - object id 배열
+  //favorited post - object id 배열
+  //created post - object id 배열
 });
 
 module.exports = mongoose.model('User', userSchema);
