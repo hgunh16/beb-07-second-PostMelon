@@ -1,6 +1,6 @@
 const router = {
-  devRouter: require('./devRouter'),
-  userRouter: require('./userRouter'),
+  devRouter: require('./dev.route'),
+  userRouter: require('./user.route'),
 };
 
 module.exports = router;
