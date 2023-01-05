@@ -7,6 +7,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:7545'));
 async function setServerAccount() {
   try {
     const accounts = await web3.eth.getAccounts();
+    console.log(accounts);
     return accounts[0];
   } catch (e) {
     console.error(e);
