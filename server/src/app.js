@@ -27,17 +27,19 @@ app.use('/', (req, res) => {
   res.send('hello!');
 });
 
-//https
-const https = require('https');
-const options = require('./config/pem_config').options;
-const httpsPort = 443;
-
-https.createServer(options, app)
-
-.listen(httpsPort, () => {
-  console.log(`server is listening at PORT : ${httpsPort}`);
-});
-
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(app.get('port'), () => {
+    console.log(`server is listening at PORT : ${app.get('port')}`);
+  });
+} else {
+  //https
+  const https = require('https');
+  const options = require('./config/pem_config').options;
+  const httpsPort = 443;
+  https.createServer(options, app).listen(httpsPort, () => {
+    console.log(`server is listening at PORT : ${httpsPort}`);
+  });
+}
 
 //error handler, https://localhost
 
@@ -64,4 +66,3 @@ connect();
 //     console.log(`[RUN] StatesAirline Server... | http://localhost:${port}`);
 //   });
 // }
-
