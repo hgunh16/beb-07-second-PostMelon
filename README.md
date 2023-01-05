@@ -1,6 +1,5 @@
-# beb-07-second
+# beb-07-second-PostMelon
 
-PostMelon
 
  **팀장 :** 권동민
 
