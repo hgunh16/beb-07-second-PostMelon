@@ -27,7 +27,19 @@ app.use('/', (req, res) => {
   res.send('hello!');
 });
 
-//error handler
+//https
+const https = require('https');
+const options = require('./config/pem_config').options;
+const httpsPort = 443;
+
+https.createServer(options, app)
+
+.listen(httpsPort, () => {
+  console.log(`server is listening at PORT : ${httpsPort}`);
+});
+
+
+//error handler, https://localhost
 
 // app.use((req, res, next) => {
 //   res.status(404).send('Not Found!');
@@ -53,6 +65,3 @@ connect();
 //   });
 // }
 
-app.listen(app.get('port'), () => {
-  console.log(`server is listening at PORT : ${app.get('port')}`);
-});
