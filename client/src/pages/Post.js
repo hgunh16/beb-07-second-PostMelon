@@ -1,5 +1,4 @@
-import '../assets / css/Post.css';
-import { Link } from 'react-router-dom';
+
 
 const Post = () => {
   return <div className="Post">Post!</div>;
