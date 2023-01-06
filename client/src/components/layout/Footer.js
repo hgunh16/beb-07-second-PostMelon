@@ -64,7 +64,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div className="footer h-[540px] bg-gray-light pt-20">
+    <div className="footer mt-20 h-[540px] bg-gray-light pt-20">
       <div className="footer-inner mx-auto flex w-3/4 justify-between whitespace-nowrap pr-16">
         <div className="footer-main flex flex-col">
           <div className="mb-10 text-5xl">
