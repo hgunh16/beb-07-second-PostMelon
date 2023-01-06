@@ -8,14 +8,14 @@ const userSchema = new mongoose.Schema({
   nickname: { type: String, required: true },
   password: { type: String, required: true, trim: true },
   address: { type: String, required: true, trim: true },
-  token_amount: { type: Number },
-  eth_amount: { type: Number },
+  token_amount: { type: Number, default: 0 },
+  eth_amount: { type: Number, default: 0 },
   created_at: { type: Date, default: Date.now, required: true },
-  created_posts: [{ type: ObjectId, ref: 'Post' }],
-  favorited_posts: [{ type: ObjectId, ref: 'Post' }],
-  collected_nfts: [{ type: ObjectId, ref: 'Nft' }],
-  favorited_nfts: [{ type: ObjectId, ref: 'Nft' }],
-  created_nfts: [{ type: ObjectId, ref: 'Nft' }],
+  created_posts: { type: [ObjectId], default: [] },
+  favorited_posts: { type: [ObjectId], default: [] },
+  collected_nfts: { type: [ObjectId], default: [] },
+  favorited_nfts: { type: [ObjectId], default: [] },
+  created_nfts: { type: [ObjectId], default: [] },
 });
 
 userSchema.pre('save', async function (next) {

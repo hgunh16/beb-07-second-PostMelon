@@ -94,13 +94,6 @@ module.exports = {
           nickname,
           password,
           address,
-          token_amount: 0,
-          eth_amount: 0,
-          created_posts: [],
-          favorited_posts: [],
-          collected_nfts: [],
-          favorited_nfts: [],
-          created_nfts: [],
         });
 
         await user.save(); //db 저장

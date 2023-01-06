@@ -2,7 +2,7 @@ const express = require('express');
 const signUpController = require('../controllers/signUp.controller');
 const signUpRouter = express.Router();
 
-signUpRouter.get('/', signUpController.signUpHome);
+signUpRouter.post('/', signUpController.signUp);
 
 // signUpRouter.post('/signup', signUpController.signUpPage);
 
