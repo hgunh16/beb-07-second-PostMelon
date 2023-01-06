@@ -88,14 +88,14 @@ module.exports = {
     try{
       let user = await User.findOne({email});
       if(user){
-        return res.json({ errors : [{msg : "User already exists"}] })
+        return res.json({ errors : [{msg : "User already exists"}] }) // email 중복 확인
       }
       user = new User({
         email,
         nickname,
         password,
       });
-
+      //hash작업
       const hashedPassword = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, hashedPassword)
 
