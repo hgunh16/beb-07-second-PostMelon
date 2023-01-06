@@ -1,7 +1,6 @@
 //import
 const express = require('express');
 require('dotenv').config();
-const mongoose = require('mongoose');
 
 //middleware import
 const cors = require('cors');
@@ -30,6 +29,8 @@ app.use('/', (req, res) => {
   res.send('hello!');
 });
 
+//server listen
+
 if (require('./config/pem_config').options.exist) {
   const https = require('https');
   const options = require('./config/pem_config').options;
@@ -42,6 +43,10 @@ if (require('./config/pem_config').options.exist) {
     console.log(`server is listening at PORT : ${app.get('port')}`);
   });
 }
+
+//db connection
+
+connect();
 
 //error handler, https://localhost
 
@@ -56,15 +61,3 @@ if (require('./config/pem_config').options.exist) {
 //     stacktrace: err.toString(),
 //   });
 // });
-
-//db connection
-
-connect();
-
-//server listen
-
-// if (process.env.NODE_ENV !== "test") {
-//   app.listen(port, () => {
-//     console.log(`[RUN] StatesAirline Server... | http://localhost:${port}`);
-//   });
-// }
