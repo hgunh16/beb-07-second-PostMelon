@@ -1,31 +1,51 @@
-import './Header.css';
-import { Link } from 'react-router-dom';
+import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="header sticky top-0 z-50 bg-orange">
-      <div className="header-inner relative mx-auto h-20 w-5/6 bg-green">
-        <Link to="/">
-          <div className="logo absolute inset-y-0 my-auto h-[57px] bg-yellow text-[40px] text-white">
-            <img className='h-20 rounded-full' src='https://cdnimg.melon.co.kr/svc/images/promotion/202206120039477755.png' alt='' />
-          </div>
-        </Link>
-
-        <ul className="category absolute inset-y-0 right-0 my-auto flex h-[60px] items-center bg-purple text-xl text-white">
-          <Link to="/market" className="category-item">
-            Market
-          </Link>
-          <Link to="/mypage" className="category-item">
-            Mypage
-          </Link>
-          <Link to="/post" className="category-item">
-            PostDetail
-          </Link>
-          <Link to="/login" className="category-item">
-            Login
-          </Link>
+    <div className="header relative h-64 pt-[80px]">
+      <div className="logo absolute top-[30.27%] left-[4.84%] h-[119px] w-[153px] text-5xl font-normal">
+        Post Melon
+      </div>
+      <div className="sub-menu mx-auto mb-3 w-[52%]">
+        <div className="search relative mx-auto mb-[33px] h-16 w-3/4 rounded-lg bg-gray-light drop-shadow-md">
+          <input
+            className="h-16 w-11/12 rounded-lg bg-gray-light pl-6 text-gray-dark focus:outline-none"
+            placeholder="input post name or content"
+          ></input>
+          <span className="material-symbols-outlined absolute inset-y-0 my-auto h-9 text-4xl hover:cursor-pointer">
+            search
+          </span>
+        </div>
+        <ul className="category flex w-full justify-center whitespace-nowrap">
+          <li>
+            <Link to="" className="category-item">
+              List
+            </Link>
+          </li>
+          <li>
+            <Link to="" className="category-item">
+              Market
+            </Link>
+          </li>
+          <li>
+            <Link to="" className="category-item">
+              MyPage
+            </Link>
+          </li>
+          <li>
+            <Link to="" className="category-item">
+              Login / Logout
+            </Link>
+          </li>
+          <li>
+            <Link to="" className="category-item">
+              Join
+            </Link>
+          </li>
         </ul>
       </div>
+      <hr className="mx-auto h-[3px] w-11/12 rounded-sm bg-gray-dark" />
     </div>
   );
 };
