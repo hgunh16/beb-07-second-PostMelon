@@ -9,5 +9,6 @@ devRouter.get('/posts', devController.devPost);
 devRouter.get('/posts/:postid', devController.devPostDetail);
 devRouter.get('/nfts', devController.devNft);
 devRouter.get('/nfts/:tokenId', devController.devNftDetail);
+devRouter.post('/signup', devController.devSignUp);
 
 module.exports = devRouter;

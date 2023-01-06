@@ -1,9 +1,12 @@
 //import
 const express = require('express');
 require('dotenv').config();
+const mongoose = require('mongoose')
+
 
 //middleware import
 const cors = require('cors');
+
 
 //router import
 const router = require('./routes');
@@ -23,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 //routes
 app.use('/dev', router.devRouter);
 app.use('/user', router.userRouter);
+app.use('/signup', router.signUpRouter);
 app.use('/', (req, res) => {
   res.send('hello!');
 });
@@ -31,7 +35,6 @@ app.use('/', (req, res) => {
 const https = require('https');
 const options = require('./config/pem_config').options;
 const httpsPort = 443;
-
 https.createServer(options, app)
 
 .listen(httpsPort, () => {
