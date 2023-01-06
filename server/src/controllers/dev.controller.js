@@ -1,6 +1,9 @@
 const Post = require('../models/post');
 const User = require('../models/user');
+
 const Nft = require('../models/nft');
+
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   devHome: (req, res) => {
@@ -51,6 +54,7 @@ module.exports = {
     }
   },
 
+
   devNft: async (req, res, next) => {
     try {
       const nfts = await Nft.find({})
@@ -73,4 +77,35 @@ module.exports = {
       next(err);
     }
   },
+
+
+
+  devSignUp : async (req, res, next) => {
+    console.log(req.body)
+    const {email, nickname, password } =req.body;
+  
+    
+    try{
+      let user = await User.findOne({email});
+      if(user){
+        return res.json({ errors : [{msg : "User already exists"}] })
+      }
+      user = new User({
+        email,
+        nickname,
+        password,
+      });
+
+      const hashedPassword = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, hashedPassword)
+
+      await user.save();//db 저장
+
+      res.send("SignUp Successed.")
+    }catch(error){
+      console.error(error.message);
+      next(err);
+    }
+  }
+
 };
