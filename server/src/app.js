@@ -1,9 +1,12 @@
 //import
 const express = require('express');
 require('dotenv').config();
+const mongoose = require('mongoose')
+
 
 //middleware import
 const cors = require('cors');
+
 
 //router import
 const router = require('./routes');
@@ -23,9 +26,11 @@ app.use(express.urlencoded({ extended: false }));
 //routes
 app.use('/dev', router.devRouter);
 app.use('/user', router.userRouter);
+app.use('/signup', router.signUpRouter);
 app.use('/', (req, res) => {
   res.send('hello!');
 });
+
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(app.get('port'), () => {
@@ -40,6 +45,7 @@ if (process.env.NODE_ENV !== 'production') {
     console.log(`server is listening at PORT : ${httpsPort}`);
   });
 }
+
 
 //error handler, https://localhost
 
