@@ -14,6 +14,7 @@ async function setServerAccount() {
   }
 }
 
+// 계정 생성
 async function createAccount(password) {
   try {
     const account = await web3.eth.personal.newAccount(password);

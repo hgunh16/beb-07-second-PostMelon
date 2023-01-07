@@ -1,5 +1,5 @@
 module.exports = {
-  userHome: (req, res) => {
+  getAllUser: (req, res) => {
     res.send('user page');
   },
 };

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 
-const loginController = {
+module.exports = {
   login: async (req, res) => {
     const { email, password } = req.body;
     const userData = await User.findOne({ email });
@@ -77,5 +77,3 @@ const loginController = {
     }
   },
 };
-
-module.exports = loginController;
