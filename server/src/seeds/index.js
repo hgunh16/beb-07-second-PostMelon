@@ -25,14 +25,14 @@ mongoose.connection.on('error', (error) => {
   console.error('connection error', error);
 });
 
-// setPost().then(() => {
-//   console.log('seed post insert complete');
+// setUser().then(() => {
+//   console.log('seed user insert complete');
 // });
+
+setPost().then(() => {
+  console.log('seed post insert complete');
+});
 
 setNft().then(() => {
   console.log('seed nft insert complete');
 });
-
-// setUser().then(() => {
-//   console.log('seed user insert complete');
-// });

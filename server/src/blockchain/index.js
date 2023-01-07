@@ -14,4 +14,16 @@ async function setServerAccount() {
   }
 }
 
-const serverAccount = setServerAccount();
+async function createAccount(password) {
+  try {
+    const account = await web3.eth.personal.newAccount(password);
+    return account;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+module.exports = {
+  setServerAccount,
+  createAccount,
+};

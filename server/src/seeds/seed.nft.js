@@ -9,8 +9,8 @@ const seedNft = [
     image_link:
       'https://post-melon.s3.ap-northeast-1.amazonaws.com/crystal.jpg',
     price: 0.01,
-    creator: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a7'),
-    owner: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a7'),
+    creator: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d92'),
+    owner: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d92'),
   },
   {
     contract_address: 'abcdefg',
@@ -18,8 +18,8 @@ const seedNft = [
     description: 'my puppy so cute',
     image_link: 'https://post-melon.s3.ap-northeast-1.amazonaws.com/dog2.jpg',
     price: 0.02,
-    creator: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a7'),
-    owner: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a8'),
+    creator: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d92'),
+    owner: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d93'),
   },
   {
     contract_address: 'abcdefg',
@@ -28,8 +28,8 @@ const seedNft = [
     image_link:
       'https://post-melon.s3.ap-northeast-1.amazonaws.com/crystal.jpg',
     price: 0.05,
-    creator: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a9'),
-    owner: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a7'),
+    creator: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d94'),
+    owner: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d92'),
   },
   {
     contract_address: 'abcdefg',
@@ -38,8 +38,8 @@ const seedNft = [
     image_link:
       'https://post-melon.s3.ap-northeast-1.amazonaws.com/download.jpg',
     price: 0.01,
-    creator: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a8'),
-    owner: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a8'),
+    creator: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d93'),
+    owner: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d93'),
   },
   {
     contract_address: 'abcdefg',
@@ -47,8 +47,8 @@ const seedNft = [
     description: 'joystick, i like this game',
     image_link: 'https://post-melon.s3.ap-northeast-1.amazonaws.com/gaming.jpg',
     price: 0.03,
-    creator: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a7'),
-    owner: mongoose.mongo.ObjectId('63b63d921225e1ff1cda00a9'),
+    creator: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d92'),
+    owner: mongoose.mongo.ObjectId('63b86fbd21bc2b2c2da94d94'),
   },
 ];
 

@@ -1,12 +1,9 @@
 //import
 const express = require('express');
 require('dotenv').config();
-const mongoose = require('mongoose')
-
 
 //middleware import
 const cors = require('cors');
-
 
 //router import
 const router = require('./routes');
@@ -27,25 +24,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/dev', router.devRouter);
 app.use('/user', router.userRouter);
 app.use('/signup', router.signUpRouter);
+app.use('/login', router.loginRouter);
 app.use('/', (req, res) => {
   res.send('hello!');
 });
 
+//server listen
 
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(app.get('port'), () => {
-    console.log(`server is listening at PORT : ${app.get('port')}`);
-  });
-} else {
-  //https
+if (require('./config/pem_config').options.exist) {
   const https = require('https');
   const options = require('./config/pem_config').options;
   const httpsPort = 443;
   https.createServer(options, app).listen(httpsPort, () => {
     console.log(`server is listening at PORT : ${httpsPort}`);
   });
+} else {
+  app.listen(app.get('port'), () => {
+    console.log(`server is listening at PORT : ${app.get('port')}`);
+  });
 }
 
+//db connection
+
+connect();
 
 //error handler, https://localhost
 
@@ -60,15 +61,3 @@ if (process.env.NODE_ENV !== 'production') {
 //     stacktrace: err.toString(),
 //   });
 // });
-
-//db connection
-
-connect();
-
-//server listen
-
-// if (process.env.NODE_ENV !== "test") {
-//   app.listen(port, () => {
-//     console.log(`[RUN] StatesAirline Server... | http://localhost:${port}`);
-//   });
-// }
