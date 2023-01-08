@@ -26,7 +26,66 @@ async function createAccount(password) {
   }
 }
 
+/* test function */
+async function hello() {
+  try {
+    const abi = [
+      {
+        "inputs": [],
+        "name": "renderHelloWorld",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "greeting",
+            "type": "string"
+          }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+      }
+    ];
+    const address = '0xe17F23d554A3F701B93931e92731A36455F476e1';
+
+    Contract.setProvider('http://127.0.0.1:7545');
+    const contract = new Contract(abi, address);
+
+    const result = await contract.methods.renderHelloWorld().call();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// hello().then((res) => {
+//   console.log(res);
+// });
+
 /* post function */
+
+async function getBalance(account) {
+  try {
+    console.log(account);
+    const abi = require('./ABI').myTokenAbi;
+    const server_account = await web3.eth.accounts.privateKeyToAccount(
+      '0x0d65605052f1e80a8e02b2c1a3a4cf1866665922dce6877c7af4bf2b8b306e53'
+    );
+    const address = server_account.address;
+    console.log(address);
+    console.log(typeof address);
+    Contract.setProvider('http://127.0.0.1:7545');
+    const contract = new Contract(abi, address);
+
+    console.log(contract.methods);
+
+    const balance = await contract.methods.decimals().call();
+    console.log(balance);
+    return balance;
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 async function getToken(recipient) {
   try {
@@ -35,7 +94,7 @@ async function getToken(recipient) {
       '0x0d65605052f1e80a8e02b2c1a3a4cf1866665922dce6877c7af4bf2b8b306e53'
     );
     const address = server_account.address;
-    console.log(address);
+
     Contract.setProvider('http://127.0.0.1:7545');
     const contract = new Contract(abi, address);
     // const result = await contract.methods
@@ -54,7 +113,7 @@ async function getToken(recipient) {
       gasPrice: await web3.eth.getGasPrice(),
       amount: 2000,
       gas: 210000,
-      to: '0x1D7D932bD660Fe94615bA5A1f5fE5744052C6893',
+      to: '0xdf971fB2f69E1C477FEDEec5e66903190f58553c',
       from: address,
       data: tx.encodeABI(),
     };
@@ -74,4 +133,5 @@ module.exports = {
   serverAccount,
   createAccount,
   getToken,
+  getBalance,
 };

@@ -44,6 +44,7 @@ module.exports = {
 
       await post.save();
       const result = await blockchain.getToken(user.address);
+      // const balance = await blockchain.getBalance(user.address);
 
       return res.status(200).send('post complete');
     } catch (err) {

@@ -21,3 +21,17 @@ fs.readFile('../contract_json/MyToken.json', 'utf-8')
       })
       .catch((err) => console.error(err));
   });
+
+fs.readFile('../contract_json/helloWorld.json', 'utf-8')
+  .then((data) => JSON.parse(data))
+  .then((data) => {
+    // console.log(data.abi);
+    fs.writeFile(
+      './helloWorld.js',
+      `module.exports=${JSON.stringify(data.abi)}`
+    )
+      .then(() => {
+        console.log('hello complete');
+      })
+      .catch((err) => console.error(err));
+  });
