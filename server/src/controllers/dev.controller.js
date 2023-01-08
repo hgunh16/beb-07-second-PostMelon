@@ -86,7 +86,7 @@ module.exports = {
       }
 
       const address = await blockchain.createAccount();
-      console.log(address);
+      // console.log(address);
 
       if (address) {
         user = new User({

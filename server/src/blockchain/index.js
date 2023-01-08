@@ -1,13 +1,15 @@
 const Web3 = require('web3');
+const Contract = require('web3-eth-contract');
 
 //추후 production상태일 때 Infura로 바꿔줘야함
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:7545'));
 
+/* account function */
 //서버 계정 설정하기
-async function setServerAccount() {
+async function serverAccount() {
   try {
     const accounts = await web3.eth.getAccounts();
-    console.log(accounts);
+    // console.log(accounts);
     return accounts[0];
   } catch (e) {
     console.error(e);
@@ -24,7 +26,52 @@ async function createAccount(password) {
   }
 }
 
+/* post function */
+
+async function getToken(recipient) {
+  try {
+    const abi = require('./ABI').myTokenAbi;
+    const server_account = await web3.eth.accounts.privateKeyToAccount(
+      '0x0d65605052f1e80a8e02b2c1a3a4cf1866665922dce6877c7af4bf2b8b306e53'
+    );
+    const address = server_account.address;
+    console.log(address);
+    Contract.setProvider('http://127.0.0.1:7545');
+    const contract = new Contract(abi, address);
+    // const result = await contract.methods
+    //   .transfer(recipient, 200000)
+    //   .send({ from: address, gasPrice: 6000000000, gas: 2100000 });
+    // console.log('result : ', result);
+    // const balance = await contract.methods.balanceOf(recipient).call();
+    // console.log(balance);
+
+    const tx = await contract.methods.transfer(
+      recipient,
+      '3000000000000000000000'
+    );
+
+    let txObj = {
+      gasPrice: await web3.eth.getGasPrice(),
+      amount: 2000,
+      gas: 210000,
+      to: '0x1D7D932bD660Fe94615bA5A1f5fE5744052C6893',
+      from: address,
+      data: tx.encodeABI(),
+    };
+
+    const signedTx = await server_account.signTransaction(txObj);
+    const result = await web3.eth.sendSignedTransaction(
+      signedTx.rawTransaction
+    );
+
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
-  setServerAccount,
+  serverAccount,
   createAccount,
+  getToken,
 };
