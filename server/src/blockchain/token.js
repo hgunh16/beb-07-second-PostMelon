@@ -3,15 +3,6 @@ const {web3J, tokenContract} = require('./');
 
 const {SERVER_ACC, SERVER_PK, POST_TOKEN_AMOUNT, TOKEN_CA, GAS} = process.env;
 
-async function createAccount(password) {
-  try {
-    const account = await web3J.eth.personal.newAccount(password);
-    return account;
-  } catch (e) {
-    console.error(e);
-  }
-}
-
 async function getBalance(account){
   try{
     const balance = await tokenContract.methods.balanceOf(account).call();
