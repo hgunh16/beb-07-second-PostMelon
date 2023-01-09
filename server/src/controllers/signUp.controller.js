@@ -1,4 +1,4 @@
-const blockchain = require('../blockchain');
+const accountUtil = require('../blockchain/account');
 const User = require('../models/user');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
         return res.json({ errors: [{ msg: 'User already exists' }] }); // email 중복 확인
       }
 
-      const address = await blockchain.createAccount();
+      const address = await accountUtil.createAccount();
       // console.log(address);
 
       if (address) {

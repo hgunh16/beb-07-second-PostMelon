@@ -57,21 +57,25 @@ module.exports = {
     const authorization = req.headers['authorization'];
 
     if (!authorization) {
-      res.status(400).json({ data: null, message: 'invalid access token' });
+      return res.status(400).json({ data: null, message: 'invalid access token' });
     }
 
     try {
       const token = authorization.split(' ')[1];
       const data = jwt.verify(token, process.env.ACCESS_SECRET);
 
-      res.status(200).json({
-        data: {
-          email: data.email,
-          nickname: data.nickname,
-          createdAt: data.createdAt,
-        },
-        message: 'ok',
-      });
+      if(data){
+        return res.status(200).json({
+          data: {
+            email: data.email,
+            nickname: data.nickname,
+            createdAt: data.createdAt,
+          },
+          message: 'ok',
+        });
+      }
+      
+      return res.status(400).json({ data: null, message: 'invalid access token' });
     } catch (err) {
       res.status(400).json({ data: null, message: 'invalid access token' });
     }

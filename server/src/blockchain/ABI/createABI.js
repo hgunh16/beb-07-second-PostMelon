@@ -4,7 +4,7 @@ fs.readFile('../contract_json/MyNFTs.json', 'utf-8')
   .then((data) => JSON.parse(data))
   .then((data) => {
     // console.log(data.abi);
-    fs.writeFile('./MyNft.js', `module.exports=${JSON.stringify(data.abi)}`)
+    fs.writeFile('./MyNfts.js', `module.exports=${JSON.stringify(data.abi)}`)
       .then(() => {
         console.log('nft complete');
       })
@@ -18,20 +18,6 @@ fs.readFile('../contract_json/MyToken.json', 'utf-8')
     fs.writeFile('./MyToken.js', `module.exports=${JSON.stringify(data.abi)}`)
       .then(() => {
         console.log('token complete');
-      })
-      .catch((err) => console.error(err));
-  });
-
-fs.readFile('../contract_json/helloWorld.json', 'utf-8')
-  .then((data) => JSON.parse(data))
-  .then((data) => {
-    // console.log(data.abi);
-    fs.writeFile(
-      './helloWorld.js',
-      `module.exports=${JSON.stringify(data.abi)}`
-    )
-      .then(() => {
-        console.log('hello complete');
       })
       .catch((err) => console.error(err));
   });

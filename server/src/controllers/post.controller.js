@@ -1,6 +1,7 @@
 const Post = require('../models/post');
 const User = require('../models/user');
-const blockchain = require('../blockchain');
+const tokenUtil = require('../blockchain/token');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
   getAllPost: async (req, res, next) => {
@@ -25,9 +26,20 @@ module.exports = {
     }
   },
   writePost: async (req, res) => {
+
+    const authorization = req.headers['authorization'];
+
+    if (!authorization) {
+      return res.status(400).json({ data: null, message: 'invalid access token' });
+    }
+
     try {
-      const { title, content, writer } = req.body;
-      console.log(title, content, writer);
+      const token = authorization.split(' ')[1];
+      console.log(token);
+      const data = jwt.verify(token, process.env.ACCESS_SECRET);
+
+      if(data){
+        const { title, content, writer } = req.body;
 
       if (!title || !content || !writer) {
         return res.status(400).send('body error');
@@ -43,10 +55,16 @@ module.exports = {
       console.log('user : ', user);
 
       await post.save();
-      const result = await blockchain.getToken(user.address);
-      // const balance = await blockchain.getBalance(user.address);
+      const result = await tokenUtil.givePostToken(user.address);
+      const balance = await tokenUtil.getBalance(user.address);
+      console.log(balance);
 
       return res.status(200).send('post complete');
+      }
+
+      return res.status(400).json({ data: null, message: 'invalid access token' });
+
+      
     } catch (err) {
       console.error(err);
     }
