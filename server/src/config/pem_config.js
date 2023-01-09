@@ -6,8 +6,14 @@ const absolutePath = path.resolve('src/config/secure');
 const exist =
   fs.existsSync(absolutePath + '/key.pem') &&
   fs.existsSync(absolutePath + '/cert.pem');
-const key = fs.readFileSync(absolutePath + '/key.pem');
-const cert = fs.readFileSync(absolutePath + '/cert.pem');
+
+let key, cert;
+
+if(exist){
+  key = fs.readFileSync(absolutePath + '/key.pem');
+  cert = fs.readFileSync(absolutePath + '/cert.pem');
+}
+
 
 module.exports.options = {
   exist,
