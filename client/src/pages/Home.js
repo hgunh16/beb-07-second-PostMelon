@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+//import homeImg from 'static/image/home_img.jpg';
 
 const Home = () => {
-  return <div className="home">home</div>;
+  return <div className="home pt-20"></div>;
 };
 
 export default Home;
