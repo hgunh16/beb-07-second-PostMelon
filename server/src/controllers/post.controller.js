@@ -34,28 +34,35 @@ module.exports = {
     }
 
     try {
+
+      //로그인 확인
       const token = authorization.split(' ')[1];
-      console.log(token);
+      // console.log(token);
       const data = jwt.verify(token, process.env.ACCESS_SECRET);
 
+      //로그인이 돼있다면
       if(data){
         const { title, content, writer } = req.body;
 
+      //필드값 중 하나라도 없다면
       if (!title || !content || !writer) {
         return res.status(400).send('body error');
       }
 
+      //새로운 document 생성
       const post = new Post({
         title,
         content,
         writer,
       });
 
-      const user = await User.findById(writer);
-      console.log('user : ', user);
+      // const user = await User.findById(writer);
+      // console.log('user : ', user);
 
       await post.save();
-      const result = await tokenUtil.givePostToken(user.address);
+      await tokenUtil.givePostToken(user.address);
+
+      // 토큰잔액 확인
       const balance = await tokenUtil.getBalance(user.address);
       console.log(balance);
 
@@ -67,6 +74,7 @@ module.exports = {
       
     } catch (err) {
       console.error(err);
+      return res.status(500).json("fail");
     }
   },
 };

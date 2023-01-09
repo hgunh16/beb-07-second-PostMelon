@@ -2,6 +2,8 @@ const Post = require('../models/post');
 const User = require('../models/user');
 const Nft = require('../models/nft');
 const blockchain = require('../blockchain');
+const user = require('../models/user');
+const {getEth} = require('../blockchain/index');
 
 module.exports = {
   devHome: (req, res) => {
@@ -21,7 +23,7 @@ module.exports = {
 
   devUserDetail: async (req, res, next) => {
     try {
-      const user = await User.findById(req.params.userid);
+      const user = await User.findById(req.params.userId);
       res.json(user);
     } catch (err) {
       console.error(err);
@@ -106,4 +108,18 @@ module.exports = {
       next(err);
     }
   },
+  getEthFaucet : async(req, res, next)=>{
+    const userId = req.params.userId; // User 
+    
+    try{
+    const userData = await user.findOne({userId})
+    const {address} = userData;
+    const userInfo = getEth(address, userId); //address userId 띄우기
+    res.status('200').send({userInfo});
+  }catch(err){
+    console.error(err.message); //일치하지 않는 경우 error 전달
+    next(err)
+  }
+  }
+  
 };

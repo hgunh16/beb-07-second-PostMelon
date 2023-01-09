@@ -10,5 +10,6 @@ devRouter.get('/post/:postid', devController.devPostDetail);
 devRouter.get('/nft', devController.devNft);
 devRouter.get('/nft/:tokenId', devController.devNftDetail);
 devRouter.post('/signup', devController.devSignUp);
+devRouter.put('/users/:userid/faucet', devController.getEthFaucet);
 
 module.exports = devRouter;

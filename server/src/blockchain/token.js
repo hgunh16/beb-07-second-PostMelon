@@ -45,7 +45,6 @@ async function givePostToken(account){
 // main()
 
 module.exports = {
-  createAccount,
   getBalance,
   givePostToken
 }
