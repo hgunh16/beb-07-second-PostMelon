@@ -23,11 +23,33 @@ app.use(express.urlencoded({ extended: false }));
 //routes
 app.use('/dev', router.devRouter);
 app.use('/user', router.userRouter);
+app.use('/signup', router.signUpRouter);
+app.use('/login', router.loginRouter);
+app.use('/post', router.postRouter);
 app.use('/', (req, res) => {
   res.send('hello!');
 });
 
-//error handler
+//server listen
+
+if (require('./config/pem_config').options.exist) {
+  const https = require('https');
+  const options = require('./config/pem_config').options;
+  const httpsPort = 443;
+  https.createServer(options, app).listen(httpsPort, () => {
+    console.log(`server is listening at PORT : ${httpsPort}`);
+  });
+} else {
+  app.listen(app.get('port'), () => {
+    console.log(`server is listening at PORT : ${app.get('port')}`);
+  });
+}
+
+//db connection
+
+connect();
+
+//error handler, https://localhost
 
 // app.use((req, res, next) => {
 //   res.status(404).send('Not Found!');
@@ -40,19 +62,3 @@ app.use('/', (req, res) => {
 //     stacktrace: err.toString(),
 //   });
 // });
-
-//db connection
-
-connect();
-
-//server listen
-
-// if (process.env.NODE_ENV !== "test") {
-//   app.listen(port, () => {
-//     console.log(`[RUN] StatesAirline Server... | http://localhost:${port}`);
-//   });
-// }
-
-app.listen(app.get('port'), () => {
-  console.log(`server is listening at PORT : ${app.get('port')}`);
-});

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const Writepost = () => {
+const WritePost = () => {
   return (
     <div
       className="background-color:#eaeaea;
@@ -194,4 +194,4 @@ width:24px;"
   );
 };
 
-export default Writepost;
+export default WritePost;

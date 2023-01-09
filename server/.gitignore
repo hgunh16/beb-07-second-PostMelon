@@ -28,6 +28,9 @@ yarn-error.log*
 dist/
 build/
 
+#https
+/src/config/secure/key.pem
+
 # Serverless generated files
 .serverless/
 
