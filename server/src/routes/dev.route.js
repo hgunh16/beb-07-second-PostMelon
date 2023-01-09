@@ -8,7 +8,7 @@ devRouter.get('/user/:userid', devController.devUserDetail);
 devRouter.get('/post', devController.devPost);
 devRouter.get('/post/:postid', devController.devPostDetail);
 devRouter.get('/nft', devController.devNft);
-devRouter.get('/nft/:tokenId', devController.devNftDetail);
+devRouter.get('/nft/:tokenid', devController.devNftDetail);
 devRouter.post('/signup', devController.devSignUp);
 devRouter.put('/users/:userid/faucet', devController.getEthFaucet);
 

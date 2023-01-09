@@ -29,6 +29,7 @@ module.exports = {
 
         //eth를 송금하고 balance 계산
         const balance = await ethUtil.getEth(user.address, userid);
+        console.log(balance);
 
         //송금 후 잔액 보내주기
         return res.status(200).json(`eth_balance : ${balance}`);

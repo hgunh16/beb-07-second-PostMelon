@@ -56,7 +56,7 @@ module.exports = {
         writer,
       });
 
-      // const user = await User.findById(writer);
+      const user = await User.findById(writer);
       // console.log('user : ', user);
 
       await post.save();

@@ -1,8 +1,10 @@
 const {web3J, tokenContract} = require('./');
 // console.log(tokenContract.methods);
 
+//환경변수 가져오기
 const {SERVER_ACC, SERVER_PK, POST_TOKEN_AMOUNT, TOKEN_CA, GAS} = process.env;
 
+//토큰 잔액 확인
 async function getBalance(account){
   try{
     const balance = await tokenContract.methods.balanceOf(account).call();
@@ -13,10 +15,14 @@ async function getBalance(account){
   }
 }
 
+//게시글 작성 시 토큰 전송
 async function givePostToken(account){
   try{
+
+    //트랜잭션 생성
     const txData = await tokenContract.methods.transfer(account, POST_TOKEN_AMOUNT).encodeABI();
 
+    //tx 객체 생성
     const txObj = {
       from : SERVER_ACC,
       to : TOKEN_CA,
