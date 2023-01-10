@@ -19,27 +19,27 @@ const Header = () => {
         </div>
         <ul className="category flex w-full justify-center whitespace-nowrap">
           <li>
-            <Link to="" className="category-item">
+            <Link to="/list" className="category-item">
               List
             </Link>
           </li>
           <li>
-            <Link to="" className="category-item">
+            <Link to="/market" className="category-item">
               Market
             </Link>
           </li>
           <li>
-            <Link to="" className="category-item">
+            <Link to="/mypage" className="category-item">
               MyPage
             </Link>
           </li>
           <li>
-            <Link to="" className="category-item">
+            <Link to="/login" className="category-item">
               Login / Logout
             </Link>
           </li>
           <li>
-            <Link to="" className="category-item">
+            <Link to="/signup" className="category-item">
               Join
             </Link>
           </li>

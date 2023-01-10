@@ -1,0 +1,197 @@
+import { Link } from "react-router-dom";
+
+const WritePost = () => {
+  return (
+    <div
+      className="background-color:#eaeaea;
+  height:744px;
+  width:1108px;"
+    >
+      <div
+        className="background-color:#eaeaea;
+height:177px;
+width:1108px;"
+      >
+        <div
+          className="background-color:#eaeaea;
+height:99px;
+width:1108px;"
+        >
+          <div
+            className="color:#595858;
+text-align:left;
+vertical-align:text-top;
+font-size:32px;
+font-family:Inter;
+line-height:auto;
+width:67px;"
+          >
+            Title
+          </div>
+          <div
+            className="height:78px;
+width:1108px;
+padding:0px;"
+          >
+            <div
+              className="background-color:#eaeaea;
+height:78px;
+width:1108px;"
+            >
+              <div
+                className="height:29px;
+width:54px;
+padding:0px;
+left:827px;
+top:24px;
+position:relative;"
+              >
+                <div
+                  className="color:#595858;
+text-align:left;
+vertical-align:text-top;
+font-size:24px;
+font-family:Inter;
+line-height:auto;
+width:54px;"
+                >
+                  date
+                </div>
+                <div
+                  className="height:29px;
+width:69px;
+padding:0px;
+left:969px;
+top:24px;
+position:relative;"
+                >
+                  <div
+                    className="color:#595858;
+text-align:left;
+vertical-align:text-top;
+font-size:24px;
+font-family:Inter;
+line-height:auto;
+width:69px;"
+                  >
+                    wr
+                  </div>
+                  writer
+                </div>
+                <div
+                  className="height:373px;
+width:1108px;
+padding:0px;
+position:absolute;"
+                >
+                  <div
+                    className="color:#595858;
+text-align:left;
+vertical-align:text-top;
+font-size:24px;
+font-family:Inter;
+line-height:auto;
+left:133px;
+top:164px;
+position:absolute;
+width:104px;"
+                  >
+                    Contents
+                  </div>
+                  <div
+                    className="height:29.15576171875px;
+width:32.40601348876953px;
+padding:0px;
+left:988px;
+top:307px;
+position:relative;"
+                  >
+                    <div
+                      className="width:32.40601348876953px;
+height:29.15576171875px;"
+                    >
+                      <div
+                        className="height:29.15576171875px;
+width:32.40601348876953px;
+width:32.40601348876953px;
+height:29.15576171875px;"
+                      >
+                        <div
+                          className="height:194px;
+width:1108px;
+padding:0px;
+top:550px;
+position:relative;"
+                        >
+                          <div
+                            className="color:#595858;
+text-align:left;
+vertical-align:text-top;
+font-size:20px;
+font-family:Inter;
+line-height:auto;
+width:77px;"
+                          >
+                            Coment
+                          </div>
+                          <div
+                            className="height:74px;
+width:1039px;
+padding:0px;
+top:42px;
+position:relative;"
+                          >
+                            <div
+                              className="background-color:#eaeaea;
+height:194px;
+width:1108px;
+border:1px solid #595858;"
+                            >
+                              <div
+                                className="height:31px;
+width:85px;
+padding:0px;
+left:969px;
+top:145px;
+position:relative;"
+                              >
+                                <div
+                                  className="background-color:#030303;
+height:31px;
+width:85px;
+filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+border-radius:5px;"
+                                >
+                                  <div
+                                    className="color:#ffffff;
+text-align:left;
+vertical-align:text-top;
+font-size:16px;
+font-family:Inter;
+line-height:auto;
+top:6px;
+left:30px;
+position:absolute;
+width:24px;"
+                                  >
+                                    OK
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WritePost;

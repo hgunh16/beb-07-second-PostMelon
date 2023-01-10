@@ -11,6 +11,7 @@ import Post from "pages/Post";
 import PostDetail from "pages/PostDetail";
 import Signup from "pages/Signup";
 import NotFound from "pages/NotFound";
+import WritePost from "pages/WritePost";
 
 function App() {
   return (
@@ -25,7 +26,9 @@ function App() {
           <Route path="/nftmint" element={<NFTMint />}></Route>
           <Route path="/post" element={<Post />}></Route>
           <Route path="/postdetail/:id" element={<PostDetail />}></Route>
+          <Route path="/writepost" element={<WritePost />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
