@@ -1,6 +1,11 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const ethUtil = require('../blockchain/eth');
+const {getBalance} = require('../blockchain/token');
+const { WEB3J,tokenContract } = require('../blockchain');
+const Web3EthPersonal = require('web3-eth-personal');
+
+const personal = new Web3EthPersonal('ws://localhost:8546');
 
 module.exports = {
   getAllUser: (req, res) => {
@@ -41,6 +46,31 @@ module.exports = {
       //로그인 안돼있거나 문제가 생겼을 경우
       console.error(err);
       return res.status(500).json("fail");
+    }
+  },
+
+  sendToken: async(req, res)=> {
+    const{fromAddress, toAddress, password , value} = req.body;
+    try{
+      const balance = getBalance(fromAddress);
+      if(value>parseInt(balance)){
+        res.json({messgae: "not enough token"})
+      }else{
+      
+        await Web3.eth.personal.unlockAccount(fromAddress, password)
+        .then(tokenContract.methods)
+        .transfer(toAddress, value)
+        .send({
+          from: fromAddress,
+          gasprice : 100,
+          gas: process.env.GAS
+        }, (err, result) => {
+          return res.status(200).json({message : 'success send token'})
+        })
+      }
+    }catch(err){
+      console.error(err)
+      return res.status(500).json("fail")
     }
   }
 };

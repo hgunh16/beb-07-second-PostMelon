@@ -60,6 +60,7 @@ module.exports = {
       // console.log('user : ', user);
 
       await post.save();
+      await User.updateOne({"_id":writer},{$push:{"created_posts":post._id}})
       await tokenUtil.givePostToken(user.address);
 
       // 토큰잔액 확인
